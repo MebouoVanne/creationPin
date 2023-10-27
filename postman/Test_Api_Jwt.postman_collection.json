@@ -1,0 +1,867 @@
+{
+	"info": {
+		"_postman_id": "816dde5e-be63-4180-9085-cdecd3943ebd",
+		"name": "Test_Api_Jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29528236"
+	},
+	"item": [
+		{
+			"name": "Create User1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"id1\",pm.response.json().id);\r",
+							"pm.environment.set(\"username1\",pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"vendredi@cfitech.be\",\r\n  \"password\": \"$2y$13$mubX7ENBqyXbEE0x4D/eLOy2p3sNREL8utctZJObIeaKjH67q0NX6\",\r\n  \"firstname\": \"Venderdi\",\r\n  \"lastname\": \"Vendredi\",\r\n  \"isVerified\": true\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"id2\",pm.response.json().id);\r",
+							"pm.environment.set(\"username2\",pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"samedi@cfitech.be\",\r\n  \"password\": \"$2y$13$I3.NfgzVbxzqgk2g6iH2IODo8vs0CGCvxa8cEWFOlmAL7IZC6Q5Bq\",\r\n  \"firstname\": \"Samedi\",\r\n  \"lastname\": \"Samedi\",\r\n  \"isVerified\": true\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usertest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"id\",pm.response.json().id);\r",
+							"pm.environment.set(\"username\",pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"token@cfitech.be\",\r\n  \"password\": \"$2y$13$N9aZTKv.KawLQzbZP3d8.OIPxZ2ThtM4lmD/vTwgkuyY7GbD3dLPO\",\r\n  \"firstname\": \"Token\",\r\n  \"lastname\": \"Token\",\r\n  \"isVerified\": true\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connexion James Bond",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token_james\",pm.response.json().token);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"jamesbond@cfitech.be\",\r\n  \"password\": \"jamesbond\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/login_check",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connexion vendredi",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token_vendredi\",pm.response.json().token);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"vendredi@cfitech.be\",\r\n  \"password\": \"vendredi\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/login_check",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"id\",pm.response.json().id);\r",
+							"pm.environment.set(\"username\",pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"tokens@cfitech.be\",\r\n  \"password\": \"$2y$13$dulvI2LB1AYAVQy6drslLeuBPzL6fzXAdH4IM2d4eZfiycFX9Ze2S\",\r\n  \"firstname\": \"Tokens\",\r\n  \"lastname\": \"Tokens\",\r\n  \"isVerified\": true\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login with Environment Variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token\",pm.response.json().token);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"tokens\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/login_check",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Pin with environment variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idLastPin\",pm.response.json().id);\r",
+							"\r",
+							"pm.test(\"Creation pin\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"pin variables\",\r\n  \"description\": \"voici un pin créer avec les variables d'environnement\",\r\n  \"user\": \"/api/users/{{id}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/pins",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"pins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a pin with environment variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idLastPin\",null);\r",
+							"\r",
+							"pm.test(\"Creation pin\",function(){\r",
+							"    pm.response.to.have.status(204);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}api/pins/{{idLastPin}}",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"pins",
+						"{{idLastPin}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Pin with environment variable Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idLastPin\",pm.response.json().id);\r",
+							"\r",
+							"pm.test(\"Creation pin\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"pin variables\",\r\n  \"description\": \"voici un pin créer avec les variables d'environnement\",\r\n  \"user\": \"/api/users/{{id}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/pins",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"pins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Pin with environment variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Creation pin\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"pin modifier\",\r\n  \"description\": \"voici un pin modifier avec les variables d'environnement\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/pins/{{idLastPin}}",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"pins",
+						"{{idLastPin}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create admin user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idAdmin\",pm.response.json().id);\r",
+							"pm.environment.set(\"admin\",pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"thanos@cfitech.be\",\r\n    \"roles\": [\r\n    \"ROLE_ADMIN\"\r\n  ],\r\n  \"password\": \"$2y$13$q5ELCrupRhG.EvQ9OgUMdeERVpVpZLPCRjS8SirXOrL1xmXz03MR.\",\r\n  \"firstname\": \"thanos\",\r\n  \"lastname\": \"thanos\",\r\n  \"isVerified\": true\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login with admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"tokenAdmin\",pm.response.json().token);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{admin}}\",\r\n  \"password\": \"thanos\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/login_check",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list of users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenAdmin}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update last user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"id\",pm.response.json().id);\r",
+							"pm.environment.set(\"username\",pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Update Last user \",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenAdmin}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"mebouo@cfitech.be\",\r\n  \"password\": \"$2y$13$ieeTwlHzA9bYDnaODwtQmughTrp25FKQ8PnNNGz23BHMN/u4uFxt2\",\r\n  \"firstname\": \"Mebouo\",\r\n  \"lastname\": \"Vanessa\",\r\n  \"imageName\": \"Team-Page-Placeholder-Male-300x200.jpg\",\r\n  \"isVerified\": true\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users/{{id}}",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete last user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"id\",null);\r",
+							"pm.environment.set(\"username\",null);\r",
+							"pm.environment.set(\"token\",null);\r",
+							"\r",
+							"pm.test(\"Update Last user \",function(){\r",
+							"    pm.response.to.have.status(204);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenAdmin}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/users/{{id}}",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nouvelutilisateur",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"nouveauId\",pm.response.json().id);\r",
+							"pm.environment.set(\"nouveauUsername\",pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"mebouopda@cfitech.be\",\r\n  \"password\": \"$2y$13$VI73bZQkos1cVBwRNBxrR.R5rHdR7MMp3Xw/jg6ClJx4FU1HP7j06\",\r\n  \"firstname\": \"Mebouo\",\r\n  \"lastname\": \"Vanessa\",\r\n  \"isVerified\": true\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nouveauToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"nouveauToken\",pm.response.json().token);\r",
+							"\r",
+							"pm.test(\"Status test\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{nouveauUsername}}\",\r\n  \"password\": \"123456\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/login_check",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modif",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"update nouveau user \",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenAdmin}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"imageName\": \"Team-Page-Placeholder-Male-300x200.jpg\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users/{{nouveauId}}",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users",
+						"{{nouveauId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

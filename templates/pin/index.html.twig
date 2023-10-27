@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}Index Pin!{% endblock %}
+{% block body %}
+    {# {% set pin_count = pins|length %}
+    {{ pin_count pin(s) founded }} #}
+    {# <li><a href="{{ path('app_home') }}">Home</a></li>
+     	<p>
+    <li><a href="{{ path('app_pin_create') }}">Create Pin</a></li> #}
+    <h1 align="center"><u>Pinterest</u></h1>
+    {% include "components/_search_data.html.twig" with {
+        form: form
+    } only %}
+    <div class = "row">
+		<div class= "col-md-6 mx-auto">
+    {% if search == true %}
+        {% set pin_count = pins|length %}
+        {{ pin_count }} pin(s) founded with the terms "{{ searchData }}"
+        {# {{ pin_count }} vidéo(s) trouvé avec le terme "{{ searchData }}" #}
+    {% endif %}
+    </div>
+    </div>
+    <div class = "container text-center">
+    <div class = "row">
+    {% for pin in pagination %}
+        <div class="card max-w-sm col-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 my-8 mr-4" data-type="post">
+        {# <article class = "col-4"> #}
+       		{# <h1>{{ pin.getTitle() }}</h1>        #}
+            <h2><a href="{{ path('app_pin_show', {id: pin.id}) }}">{{ pin.title }} </a></h2>
+        	{# <img src = {{ pin.imageName }} width="150" height="200"> #}
+            {# <img style="max-width: 250px;" src={{ vich_uploader_asset(pin, 'imageFile') }}> #}
+            <p align = "center"><img width="250" height="370" src={{ vich_uploader_asset(pin, 'imageFile') }}></p>
+
+            <p>{{ pin.description|u.truncate(10,'...',false)  }}</p>
+            {# <p>Submitted {{ pin.createdAt|date }}</p> #}
+            <p>Submitted {{ pin.createdAt|ago }}</p> 
+            <p>By {{ pin.user.firstname ~ " " ~ pin.user.lastname }}</p>
+            {# <p>By {{ pin.user.firstname }} {{pin.user.lastname }}</p> #}
+        {# </article> #}
+        </div>
+    {% else %}
+       	<p> Sorry, no pin found </p>
+    {% endfor %}
+    </div>
+    </div>
+   {# <div class="navigation"> #}
+    {# {{ knp_pagination_render(pagination) }} #}
+{# </div> #}
+    {# {{ knp_pagination_render(pagination) }} #}
+    {{ knp_pagination_render(pagination, null, {}, {
+   'align': 'center',
+   'size': 'large',
+   'rounded': true,
+}) }}
+    
+{% endblock %}
+
